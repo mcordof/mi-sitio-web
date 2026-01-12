@@ -1,0 +1,11 @@
+#lista-registros .card {
+    background: #fff;
+    padding: 10px 15px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s;
+}
+#lista-registros .card:hover {
+    transform: translateX(5px);
+    border-color: #007bff;
+}
