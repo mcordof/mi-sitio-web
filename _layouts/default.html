@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel de Control</title>
-    <link rel="stylesheet" href="{{ '../assets/css/style.css' | relative_url }}">
+    <title>{{ page.title }}</title>
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="stars"></div>
     <div class="twinkling"></div>
+
     <div class="main-container">
         {{ content }}
     </div>
 
-    <script src="{{ '../assets/js/main.js' | relative_url }}"></script>
+    <script src="{{ site.baseurl }}/assets/js/main.js"></script>
 </body>
 </html>
