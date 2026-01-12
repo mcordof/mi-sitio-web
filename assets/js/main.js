@@ -1,4 +1,3 @@
-// Al cargar la página, intentamos recuperar los datos guardados
 let registros = JSON.parse(localStorage.getItem('misRegistros')) || [];
 
 function crearRegistro() {
@@ -6,37 +5,35 @@ function crearRegistro() {
     const ambiente = document.getElementById('ambiente').value;
     const equipo = document.getElementById('equipo').value;
 
-    if (nombre.trim() === "") {
-        alert("Por favor, ingresa un nombre.");
+    if (!nombre.trim()) {
+        alert("Por favor, completa el nombre.");
         return;
     }
 
-    // Crear un objeto con el nuevo registro
-    const nuevoRegistro = {
+    const nuevo = {
         id: Date.now(),
-        nombre: nombre,
-        ambiente: ambiente,
-        equipo: equipo,
+        nombre, ambiente, equipo,
         fecha: new Date().toLocaleString()
     };
 
-    // Guardar en el arreglo y en LocalStorage
-    registros.push(nuevoRegistro);
+    registros.push(nuevo);
     localStorage.setItem('misRegistros', JSON.stringify(registros));
 
-    mostrarResultadoIndividual(nuevoRegistro);
+    // Mensaje de éxito y redirección
+    alert("✅ Registro creado con éxito. Volviendo al inicio...");
+    window.location.href = "./"; 
 }
 
-function mostrarResultadoIndividual(reg) {
-    document.getElementById('form-container').style.display = 'none';
-    const resultadoDiv = document.getElementById('resultado');
-    resultadoDiv.style.display = 'block';
-
-    document.getElementById('resumen-datos').innerHTML = `
-        <p><strong>📝 Registro:</strong> ${reg.nombre}</p>
-        <p><strong>🌍 Ambiente:</strong> ${reg.ambiente}</p>
-        <p><strong>🛠️ Equipo:</strong> ${reg.equipo}</p>
-        <hr>
-        <p><em>Total de registros en memoria: ${registros.length}</em></p>
-    `;
+function exportarJSON() {
+    if (registros.length === 0) {
+        alert("No hay datos para exportar.");
+        return;
+    }
+    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(registros, null, 2));
+    const downloadAnchorNode = document.createElement('a');
+    downloadAnchorNode.setAttribute("href", dataStr);
+    downloadAnchorNode.setAttribute("download", "registros.json");
+    document.body.appendChild(downloadAnchorNode);
+    downloadAnchorNode.click();
+    downloadAnchorNode.remove();
 }

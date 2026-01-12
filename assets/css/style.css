@@ -1,11 +1,59 @@
-#lista-registros .card {
-    background: #fff;
-    padding: 10px 15px;
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.2s;
+/* Estilo Base y Animación Twinkling */
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: 'Segoe UI', sans-serif;
+    background: #000 url('https://raw.githubusercontent.com/WebDevSimplified/Twitter-Clone-UI/main/stars.png') repeat top center;
+    color: #e0e0e0;
+    min-height: 100vh;
 }
-#lista-registros .card:hover {
-    transform: translateX(5px);
-    border-color: #007bff;
+
+.container {
+    max-width: 850px;
+    margin: 40px auto;
+    background: rgba(20, 20, 25, 0.85);
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(4px);
+}
+
+h1, h2, h3 { color: #fff; text-align: center; }
+
+/* Botones y Formulario */
+.btn {
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-primary { background: #4a90e2; color: white; }
+.btn-primary:hover { background: #357abd; transform: translateY(-2px); }
+
+.btn-success { background: #2ecc71; color: white; width: 100%; }
+.btn-export { background: #9b59b6; color: white; margin-top: 10px; }
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0 20px 0;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    color: white;
+}
+
+/* Tarjetas de Historial */
+.history-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border-left: 4px solid #4a90e2;
 }
