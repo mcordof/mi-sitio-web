@@ -1,3 +1,6 @@
 title: Mi Sistema de Gestión
-theme: minima
-remote_theme: jekyll/minima
+baseurl: "" # Déjalo vacío si es el repositorio principal o pon /nombre-del-repo
+url: ""
+
+# Borra la línea que dice "theme: minima" o "remote_theme"
+# Al borrarla, Jekyll dejará de buscar variables como $grey-color
