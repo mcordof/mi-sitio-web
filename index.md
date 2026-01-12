@@ -1,27 +1,31 @@
 ---
 layout: default
-title: Inicio
+title: Panel de Control
 ---
 
-# Panel de Gestión
-<div style="text-align: center; margin-bottom: 30px;">
-    <a href="./formulario" class="btn btn-primary">➕ Nuevo Registro</a>
-    <button onclick="exportarJSON()" class="btn btn-export">📥 Exportar JSON</button>
+# Panel de Control
+
+<div class="button-group">
+    <a href="./formulario" class="btn btn-blue"><span>+</span> Crear Nuevo Registro</a>
+    <button onclick="exportarJSON()" class="btn btn-purple"><span>📥</span> Exportar JSON</button>
+    <button onclick="borrarTodo()" class="btn btn-red"><span>🗑️</span> Borrar Todo</button>
 </div>
 
-<div id="lista-registros"></div>
+<h3>Historial de Registros</h3>
+<div id="lista" class="grid"></div>
 
 <script>
-    const lista = document.getElementById('lista-registros');
+    const container = document.getElementById('lista');
     if (registros.length === 0) {
-        lista.innerHTML = "<p style='text-align:center'>No hay registros guardados.</p>";
+        container.innerHTML = "<p style='grid-column: 1/3; text-align:center; opacity:0.5;'>No hay registros guardados.</p>";
     } else {
         registros.forEach(r => {
-            lista.innerHTML += `
-                <div class="history-card">
-                    <strong>${r.nombre}</strong><br>
-                    <small>${r.ambiente} | ${r.equipo}</small><br>
-                    <small style="opacity: 0.6">${r.fecha}</small>
+            container.innerHTML += `
+                <div class="card-item">
+                    <h4>${r.nombre}</h4>
+                    <p>🌍 Ambiente: ${r.ambiente}</p>
+                    <p>🛠️ Equipo: ${r.equipo}</p>
+                    <p style="font-size: 0.7rem; margin-top:10px;">🕒 ${r.fecha}</p>
                 </div>`;
         });
     }
